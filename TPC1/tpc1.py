@@ -1,5 +1,7 @@
 import sys
 from tabulate import tabulate
+import matplotlib.pyplot as plt
+
 
 #função que abre um ficheiro, le o seu conteudo
 #coloca o conteudo numa lista de strings e retorna 
@@ -163,7 +165,6 @@ def print_colesterol(dic,nTotal):
 
 
 ##---------------------------------- Exercício 4 ------------------------------------
-
 def tabular(dic,escolha):
     table = []
     #1 - sexo : 2 - idade : 3 - colesterol
@@ -179,6 +180,29 @@ def tabular(dic,escolha):
             table.append(row)
     print(tabulate(table, headers=headers))
 
+##---------------------------------- Exercício Extra ------------------------------------
+def grafo(dict,escolha):
+    
+    # Create a bar chart
+    heights = [value[0] for value in dict.values()]
+    plt.bar(dict.keys(), heights)
+    
+    if(escolha==1):
+        plt.xlabel('Sexo')
+        plt.ylabel('Quantidade')
+        plt.title('Quantidade de doentes por Sexo')
+    if(escolha==2):
+        plt.xlabel('Idade')
+        plt.ylabel('Quantidade')
+        plt.title('Quantidade de doentes por Idade')
+    if(escolha==3):
+        plt.bar(dict.keys(), dict.values())
+        plt.xlabel('Colesterol')
+        plt.ylabel('Quantidade')
+        plt.title('Quantidade de doentes por Colesterol')
+    
+    # Display the plot
+    plt.show()
 
 def main():
     dir = "../TPC1/myheart.csv"
@@ -204,6 +228,9 @@ def main():
     tabular(dIdade,2)
     tabular(dColesterol,3)
     
+    grafo(dSexo,1)
+    grafo(dIdade,2)
+    grafo(dColesterol,3)
     
 if __name__ == "__main__":
     main()
