@@ -36,15 +36,16 @@ def parseLinha(linha):
         elif (linha[i].upper()=='O' and linha[i+1].upper()=='N'):
             i+=2
             flag_ON = True
-        elif(linha[i]=="="):
+        elif(linha[i]=="=" and flag_ON):
             break
         else:
             i+=1
     return somatorio
 
 def main():
-   print(parseLinha("12 a1a on 123a off 1 ="))
-   
+   #print(parseLinha("12 a1a on 123a off 1 ="))
+
+   print(parseLinha(leTerminal()))
    
 
 if __name__ == '__main__':
