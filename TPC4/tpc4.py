@@ -66,6 +66,8 @@ def parse2Json(dir_source,dir_dest):
             if k in operacao:
                 info[i][k] = do_op(info[i][k],operacao[k])
               
+              
+              
     with open(dir_dest, "w+") as f:
         json.dump(info, f, indent=4, ensure_ascii=False)
 
